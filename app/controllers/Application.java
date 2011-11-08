@@ -14,5 +14,10 @@ public class Application extends Controller {
     	List<Post> olderPosts = Post.find("order by postedAt desc").from(1).fetch(10);
         render(frontPost, olderPosts);
     }
+    
+    public static void users() {
+    	List<User> users = User.findAll();
+    	renderJSON(users);
+    }
 
 }

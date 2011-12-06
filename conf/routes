@@ -14,5 +14,8 @@ GET     /public/                                staticDir:public
 
 POST    /posts/{postId}/comments                Application.postComment
 
+# Captcha
+GET     /captcha                                Application.captcha
+
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}

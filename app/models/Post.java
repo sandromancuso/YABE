@@ -1,10 +1,21 @@
 package models;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
-import javax.persistence.*;
- 
-import play.db.jpa.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import play.data.validation.MaxSize;
+import play.data.validation.Required;
+import play.db.jpa.Model;
  
 @Entity
 public class Post extends Model {
@@ -12,17 +23,20 @@ public class Post extends Model {
     public String title;
     public Date postedAt;
     
-	@ManyToMany(cascade=CascadeType.PERSIST)
-	public Set<Tag> tags;
-    
     @Lob
+    @Required
+    @MaxSize(1000)
     public String content;
     
+    @Required
     @ManyToOne
     public User author;
     
     @OneToMany(mappedBy="post", cascade=CascadeType.ALL)
     public List<Comment> comments;    
+    
+	@ManyToMany(cascade=CascadeType.PERSIST)
+	public Set<Tag> tags;
     
     public Post(User author, String title, String content) {
         this.comments = new ArrayList<Comment>();

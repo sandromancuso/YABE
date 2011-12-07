@@ -20,3 +20,6 @@ GET     /captcha                                Application.captcha
 
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}
+
+# Import CRUD routes
+*       /admin                                  module:crud

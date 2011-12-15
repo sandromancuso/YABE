@@ -1,40 +1,34 @@
-<!DOCTYPE html >
+<!DOCTYPE html>
 <html>
     <head>
-        <title>#{get 'title' /}</title>		
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>Administration</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        #{get 'moreStyles' /}
         <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/main.css'}" />
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}" />
         <script src="@{'/public/javascripts/jquery-1.5.2.min.js'}"></script>
         <script src="@{'/public/javascripts/jquery.tools-1.2.5.toolbox.expose.min.js'}"></script>
     </head>
-    <body>
-        
+    <body id="admin">
         <div id="header">
             <div id="logo">
-                yabe.
+                yabe. <span>administration</span>
             </div>
             <ul id="tools">
                 <li>
-                    <a href="@{Admin.index()}">Log in to write something</a>
+                    <a href="@{Secure.logout()}">Log out</a>
                 </li>
             </ul>
-            <div id="title">
-                <span class="about">About this blog</span>
-                <h1><a href="@{Application.index()}">${blogTitle}</a></h1>
-                <h2>${blogBaseline}</h2>
-            </div>
         </div>
         
         <div id="main">
-            #{doLayout /} 
+            #{doLayout /}
         </div>
         
         <p id="footer">
-            Yabe is a (not that) powerful blog engine built with the 
+            Yabe is a (not so) powerful blog engine built with the 
             <a href="http://www.playframework.org">Play framework</a>
             as a tutorial application.
         </p>
-        
     </body>
 </html>
